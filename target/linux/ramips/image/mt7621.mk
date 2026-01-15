@@ -922,6 +922,16 @@ define Device/dlink_dir_nand_128m
 	check-size
 endef
 
+define Device/dlink_dir-1360-a1
+  $(Device/dlink_dir_nand_128m)
+  DEVICE_MODEL := DIR-1360
+  DEVICE_VARIANT := A1
+  IMAGES := factory.bin sysupgrade.bin
+  IMAGE/factory.bin := $$(IMAGE/recovery.bin)
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += dlink_dir-1360-a1
+
 define Device/dlink_dir-1935-a1
   $(Device/dlink_dir-8xx-a1)
   DEVICE_MODEL := DIR-1935
