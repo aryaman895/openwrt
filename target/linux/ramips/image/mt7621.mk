@@ -429,6 +429,16 @@ define Device/dlink_dir-xx60-a1
 	check-size
 endef
 
+define Device/dlink_dir-1360-a1
+  $(Device/dlink_dir-xx60-a1)
+  DEVICE_MODEL := DIR-1360
+  DEVICE_VARIANT := A1
+  IMAGES += recovery.bin factory.bin
+  IMAGE/recovery.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | check-size
+  IMAGE/factory.bin  := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | check-size
+endef
+TARGET_DEVICES += dlink_dir-1360-a1
+
 define Device/dlink_dir-1960-a1
   $(Device/dlink_dir-xx60-a1)
   DEVICE_MODEL := DIR-1960
